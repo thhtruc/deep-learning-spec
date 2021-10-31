@@ -3,7 +3,7 @@
 
 **1. Normalizing Input Data**
 - When inputting data to a deep learning model, it is standard practice to normalize the data to zero mean and unit variance.
-- Xi = (Xi-Mean_i)/StdDev_i
+    <img src="images/norm_data.png" width="150" height="250">
   - Features on different scales take longer to reach the minimum
   - Normalized data helps the network converge faster 
 
