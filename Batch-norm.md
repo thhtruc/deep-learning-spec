@@ -21,8 +21,18 @@
     - Activation: The activations from the previous layer are passed as input to the Batch Norm.
     - Caluculate Mean and Variance
     - Normalized: normalized values now have mean = 0 and variance = 1
-    - Scale and Shift: multiplying the normalized values by a factor, gamma, and adding to it a factor, beta 
-    --> values is shifted to a different mean) and scaled (to a different variance)
+    - Scale and Shift:
+        - Batch Norm allows its values is shifted to a different mean) and scaled (to a different variance) --> by multiplying the normalized values by a factor, gamma, and adding to it a factor, beta (element-wise multiply)
+        - These factors are not hyperparameters --> trainable parameters that are learned by the network
     - Moving Average: 
         - During training, Batch Norm calculates Exponential Moving Average (EMA). 
         - At the end of training, it simply saves this value as part of the layer’s state
+
+**3. Advantages **
+- Internal Covariate Shift: 
+    - The problem of Covariate Shift — the model is fed data with a very different distribution than what it was previously trained with — even though that new data still conforms to the same target function --> spend more time re-learning --> slows down the training process
+    - During training, each layer of the network learns an output function to fit its input. Each layer ends up trying to learn from a constantly shifting input, thus taking longer to converge and slowing down the training.
+    - Batch Norm helps to stabilize these shifting distributions from one iteration to the next --> speeds up training
+
+- Loss and Gradient Smoothening:
+    - Batch Norm does to smoothen the loss landscape substantially by changing the distribution of the network’s weights. --> gradient descent can confidently take a step in a direction knowing that it will not find abrupt disruptions along the way --> take larger steps by using a bigger learning rate
