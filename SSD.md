@@ -8,17 +8,14 @@
 - SSD has 2 components: a backbone model and SSD head.
     - **Backbone model:**
         - **Base Network**: are based on CNN standard architecture used for high quality image classification.
+                            
             - VGG-16 is used for feature extraction.
-                
-                ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bd6c8d9c-039e-4b0f-8bbe-1e7fc7204eb7/Untitled.png)
-                
+    
+    <img src="images/SSD.png">
+    
             - Input layer: 300x300x3 / 500x500x3
-            - VGG_16 through Conv5_3: reject fully-connected layers - 38x38x512
-            - Conv4_3 Layer: 38x38x512
-                - Add convolutional layer in standard CNN —> output layer conv6 19x19x1024
-                - Add classifier to detect object in feature map
-                    - Using a convolutional layer without altering width or height of feature maps
-                    - 8732 boxes to detect
+            - Base Network: From input image to conv-7
+                - VGG_16: converts fully-connected layers FC6 and FC7 to conv6, conv7
                 
     - **SSD head:** one or more convolutional layers added to this backbone —> produce detections with the following key features:
         - **Multi-scale feature maps for detection - MultiBox objective:** add convolutional feature layers to the end of the truncated based network.
