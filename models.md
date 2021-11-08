@@ -6,14 +6,14 @@
         - Head: classification and regression box
             - Architecture:
                 
-                ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/de7cea8e-9174-48e1-b1e5-7c57080bfb56/Untitled.png)
+                <img src="images/Ultra-slim.png" >
                 
     - Version-RFB (with the modified RFB module)
         - Base Network: MobileNet-Tiny with the modified RFB module — output is concatenated and apply element-wise before forward activation function.
         - Head: classification and regression box
         - Architecture:
             
-            ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5d4e13ac-e80d-4b27-b44d-506e13006125/Untitled.png)
+            <img src="images/Ultra-RFB.png >
             
 - Train/Test Dataset:
     - Training data set:
