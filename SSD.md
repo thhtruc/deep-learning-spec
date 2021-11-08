@@ -40,16 +40,16 @@
                 - **Multibox_loss = confidence_loss + alpha * location_loss**
                     - Confidence Loss: the softmax loss over multiple classes confidences
                         
-                        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1d72cc69-9392-441e-a257-51dc3d7b2402/Untitled.png)
+                        <img src="images/confidence loss.png" >
                         
-                    - Location Loss: a Smooth L1 loss between predicted bounding boxes and ground truth.
+                    - Location Loss: a Smooth L1 loss between predicted bounding boxes and ground truth —> IoU > 0.5: positive matching (predicted bounding box contain object) and IoU < 0.5: negative matching (can remove predicted bounding box from image)
                         
-                        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c9f7d3fe-ee40-4e4a-9072-b0a07899fad7/Untitled.png)
+                        <img src="images/localization loss.png" >
                         
             - Choosing scales and aspect ratios for each default boxes:
                 - The scale of the default boxes for each feature map is computed as:
                 
-                ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2de09986-5ac2-43fa-81da-fd34f4e3fedb/Untitled.png)
+                <img src="images/scake.png" >
                 
                 - s_min = 0.2, s_max=0.9 —> That means the scale at the lowest layer is 0.2 and the scale at the highest layer is 0.9. All layers in between is regularly spaced.
             - Hard negative mining:
@@ -58,9 +58,9 @@
                 - Data Augmentation technique is used handle variants of object sizes and shapes using shearing, zoom in, zoom out, flipping, cropping
                 - Making the model more robust to various input object sizes and shapes
                 
-    
-    ## Receptive Field Block:
+            - Atrous convolution: FC6 and FC7 use Atrous convolution instead of conventional convolution —> feature maps are large at Conv6 and Conv7 - increase the receptive field while keeping number of parameters relatively fewer compared with conventional convolution.
+    ### Receptive Field Block:
     
     - Construction of RFB module by combining multiple branches with different kernels and dilated convolution layers.
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/704bed81-ed7c-4603-82dd-0b5988946152/Untitled.png)
+    <img src="images/RFB.png" >
