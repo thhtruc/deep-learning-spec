@@ -11,9 +11,9 @@
     - Version-RFB (with the modified RFB module)
         - Base Network: MobileNet-Tiny with the modified RFB module — output is concatenated and apply element-wise before forward activation function.
         - Head: classification and regression box
-        - Architecture:
+             - Architecture:
             
-            <img src="images/Ultra-RFB.png >
+                <img src="images/Ultra-RFB.png" >
             
 - Train/Test Dataset:
     - Training data set:
